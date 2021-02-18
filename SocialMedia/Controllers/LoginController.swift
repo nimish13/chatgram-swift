@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginController: UIViewController {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let errorMessage = error {
                     GlobalUtility.showErrorAlert(error: errorMessage, vc: self)
-                } else {                    
+                } else {
                     GlobalUtility.switchController(identifier: K.mainBarIdentifier)
                 }
             }
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController: UITextFieldDelegate {
+extension LoginController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)

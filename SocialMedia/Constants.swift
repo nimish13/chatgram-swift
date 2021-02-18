@@ -7,6 +7,8 @@
 
 struct K {
     static let appName = "ChatGram 💬"
+    static let postCellIdentifier = "PostCell"
+    static let postCellNibName = "PostCell"
     static let mainBarIdentifier = "MainTabBarController"
     static let loginNavIdentifier = "LoginNavigationController"
     struct Auth {
@@ -15,8 +17,16 @@ struct K {
     }
     struct Post {
         static let collectionName = "posts"
+        static let userField = "user"
         static let ownerField = "owner"
         static let bodyField = "body"
         static let timestampField = "timestamp"
+    }
+    
+    struct User {
+        static let collectionName = "users"
+        static let firstNameField = "firstName"
+        static let lastNameField = "lastName"
+        static let emailField = "email"
     }
 }

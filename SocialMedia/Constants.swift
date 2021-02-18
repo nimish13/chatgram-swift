@@ -8,6 +8,7 @@
 struct K {
     static let appName = "ChatGram 💬"
     static let postCellIdentifier = "PostCell"
+    static let editProfileIdentifier = "editProfile"
     static let postCellNibName = "PostCell"
     static let mainBarIdentifier = "MainTabBarController"
     static let loginNavIdentifier = "LoginNavigationController"

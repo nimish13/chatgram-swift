@@ -384,6 +384,9 @@
                                 <state key="normal" title="Edit Profile">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="MBL-Eb-INy" kind="show" identifier="editProfile" id="4KQ-7L-z7D"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tmx-cI-oOb">
                                 <rect key="frame" x="10" y="318" width="394" height="495"/>
@@ -413,10 +416,81 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailLabel" destination="HXQ-ZQ-zUE" id="prl-Mi-Fwi"/>
+                        <outlet property="nameLabel" destination="NCN-6n-BGi" id="ESF-lt-LjD"/>
+                        <outlet property="profilePhotoImageView" destination="lPO-cv-B8G" id="1MD-BM-zAQ"/>
+                        <outlet property="tableView" destination="tmx-cI-oOb" id="0sZ-8Z-Xr3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxa-MQ-XCH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5013.04347826087" y="1393.5267857142856"/>
+        </scene>
+        <!--Edit Profile Controller-->
+        <scene sceneID="gE6-tq-B5x">
+            <objects>
+                <viewController id="MBL-Eb-INy" customClass="EditProfileController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pf5-Oz-C8a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="wPm-mP-uIb">
+                                <rect key="frame" x="142" y="98" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Ig9-EN-ah8"/>
+                                    <constraint firstAttribute="height" constant="130" id="uFT-dJ-gY1"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuC-tz-qie">
+                                <rect key="frame" x="20" y="767" width="374" height="36"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="MBL-Eb-INy" eventType="touchUpInside" id="91a-yo-04P"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="grp-HG-JeT">
+                                <rect key="frame" x="20" y="238" width="374" height="88"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKm-99-BuD">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lasttname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FvO-Kp-02q">
+                                        <rect key="frame" x="0.0" y="54" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IK5-us-1AW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MuC-tz-qie" firstAttribute="leading" secondItem="IK5-us-1AW" secondAttribute="leading" constant="20" id="ARq-O3-jaz"/>
+                            <constraint firstItem="IK5-us-1AW" firstAttribute="trailing" secondItem="grp-HG-JeT" secondAttribute="trailing" constant="20" id="C3d-bf-40n"/>
+                            <constraint firstItem="IK5-us-1AW" firstAttribute="trailing" secondItem="MuC-tz-qie" secondAttribute="trailing" constant="20" id="NQA-kA-F3h"/>
+                            <constraint firstItem="wPm-mP-uIb" firstAttribute="centerX" secondItem="pf5-Oz-C8a" secondAttribute="centerX" id="Ra6-Z2-RdC"/>
+                            <constraint firstItem="grp-HG-JeT" firstAttribute="leading" secondItem="IK5-us-1AW" secondAttribute="leading" constant="20" id="fcK-1e-CGj"/>
+                            <constraint firstItem="IK5-us-1AW" firstAttribute="bottom" secondItem="MuC-tz-qie" secondAttribute="bottom" constant="10" id="fj5-eY-8YM"/>
+                            <constraint firstItem="wPm-mP-uIb" firstAttribute="top" secondItem="IK5-us-1AW" secondAttribute="top" constant="10" id="nth-pm-PRh"/>
+                            <constraint firstItem="grp-HG-JeT" firstAttribute="top" secondItem="wPm-mP-uIb" secondAttribute="bottom" constant="10" id="zGX-Ab-O0W"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HWk-fx-png"/>
+                    <connections>
+                        <outlet property="firstNameField" destination="eKm-99-BuD" id="WEK-E7-8Bg"/>
+                        <outlet property="lastNameField" destination="FvO-Kp-02q" id="Byg-zb-Z9B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Hk-jQ-IJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5850.7246376811599" y="1398.8839285714284"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ynG-i5-cb8">

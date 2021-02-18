@@ -18,6 +18,7 @@
 		5B2097E425DA7ADE00FCC922 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097E325DA7ADE00FCC922 /* RegistrationController.swift */; };
 		5B2097E725DA835B00FCC922 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097E625DA835B00FCC922 /* PostController.swift */; };
 		5B2097FD25DA8ECA00FCC922 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B2097FC25DA8ECA00FCC922 /* GoogleService-Info.plist */; };
+		5B68D03825DE63460010F816 /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B68D03725DE63460010F816 /* EditProfileController.swift */; };
 		5B74A9F025DBFD42003A6959 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A9EE25DBFD42003A6959 /* PostCell.swift */; };
 		5B74A9F125DBFD42003A6959 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B74A9EF25DBFD42003A6959 /* PostCell.xib */; };
 		5B74A9F825DD089B003A6959 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A9F725DD089B003A6959 /* Post.swift */; };
@@ -44,6 +45,7 @@
 		5B2097E325DA7ADE00FCC922 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		5B2097E625DA835B00FCC922 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		5B2097FC25DA8ECA00FCC922 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5B68D03725DE63460010F816 /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		5B74A9EE25DBFD42003A6959 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		5B74A9EF25DBFD42003A6959 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		5B74A9F725DD089B003A6959 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				5B2097E625DA835B00FCC922 /* PostController.swift */,
 				5BB1143925DBA92D0042CFC8 /* ChatController.swift */,
 				5BB1147725DBD0F20042CFC8 /* ProfileController.swift */,
+				5B68D03725DE63460010F816 /* EditProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				5B2097B625DA58FA00FCC922 /* SceneDelegate.swift in Sources */,
 				5B2097D925DA6D4800FCC922 /* LoginController.swift in Sources */,
 				5B74A9F025DBFD42003A6959 /* PostCell.swift in Sources */,
+				5B68D03825DE63460010F816 /* EditProfileController.swift in Sources */,
 				5B74A9FB25DD2BAE003A6959 /* RunTimeError.swift in Sources */,
 				5B2097D425DA649400FCC922 /* Constants.swift in Sources */,
 				5B2097E725DA835B00FCC922 /* PostController.swift in Sources */,

@@ -25,10 +25,10 @@ class PostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         feedTextView.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
         feedTextView.layer.borderWidth = 2
         feedTextView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(UINib(nibName: K.postCellNibName, bundle: nil), forCellReuseIdentifier: K.postCellIdentifier)
         tableView.tableFooterView = UIView()
         loadPosts()
@@ -56,7 +56,7 @@ class PostController: UIViewController {
     }
     
     func loadPosts() {
-        db.collection(K.Post.collectionName).order(by: "timestamp", descending: false).addSnapshotListener { (querySnapshot, optionalError) in
+        db.collection(K.Post.collectionName).order(by: K.Post.timestampField, descending: false).addSnapshotListener { (querySnapshot, optionalError) in
             if let error = optionalError {
                 GlobalUtility.showErrorAlert(error: error, vc: self)
             } else {
@@ -86,7 +86,7 @@ class PostController: UIViewController {
             if let doc = document, let data = doc.data() {
                 user.firstName = data["firstName"] as! String
                 user.lastName = data["lastName"] as! String
-                user.email = data["firstName"] as! String
+                user.email = data["email"] as! String
             }
             addPost(user)
         }

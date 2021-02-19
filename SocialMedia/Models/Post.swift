@@ -8,7 +8,7 @@
 import Foundation
 
 struct Post {
-    let user: User
+    var user: User
     let body: String
     let timestamp: Double
     

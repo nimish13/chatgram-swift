@@ -24,10 +24,10 @@ class EditProfileController: UIViewController {
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if let firstName = firstNameField.text, !firstName.isEmpty, let lastName = lastNameField.text, !lastName.isEmpty {
-            db.collection(K.User.collectionName).document(Auth.auth().currentUser!.uid).setData([
+            db.collection(K.User.collectionName).document(Auth.auth().currentUser!.uid).updateData([
                 K.User.firstNameField: firstName,
-                K.User.lastNameField: lastName,
-                K.User.emailField: user.email
+                K.User.lastNameField: lastName
+//                K.User.emailField: user.email
             ]) { optionalError in
                 if let error = optionalError {
                     GlobalUtility.showErrorAlert(error: error, vc: self)

@@ -55,43 +55,6 @@ class PostController: UIViewController {
         clearFeedContent()
     }
     
-    func loadPosts() {
-        db.collection(K.Post.collectionName).order(by: K.Post.timestampField, descending: false).addSnapshotListener { (querySnapshot, optionalError) in
-            if let error = optionalError {
-                GlobalUtility.showErrorAlert(error: error, vc: self)
-            } else {
-                self.postsCollection = []
-                for document in querySnapshot!.documents {
-                    let data = document.data()
-                    self.loadUser(id: data["user"] as! String){ (user) in
-                        let post = Post(
-                            user: user,
-                            body: data["body"] as! String,
-                            timestamp: data["timestamp"] as! Double
-                        )
-                        self.postsCollection.append(post)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func loadUser(id: String, addPost:@escaping (User) -> Void) {
-        let userRef = db.collection(K.User.collectionName).document(id)
-        let user = User()
-        userRef.getDocument { (document, error) in
-            if let doc = document, let data = doc.data() {
-                user.firstName = data["firstName"] as! String
-                user.lastName = data["lastName"] as! String
-                user.email = data["email"] as! String
-            }
-            addPost(user)
-        }
-    }
-    
     func clearFeedContent() {
         feedTextView.text = ""
         setButtonsState(condition: false)
@@ -125,5 +88,53 @@ extension PostController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
+}
+
+
+// MARK: Add Methods to fetch Posts and user for each Post using dispatchGroup
+extension PostController {
+    func loadPosts() {
+        let dispatchGroup = DispatchGroup()
+        
+        db.collection(K.Post.collectionName).order(by: K.Post.timestampField, descending: true).addSnapshotListener { (querySnapshot, optionalError) in
+            if let error = optionalError {
+                GlobalUtility.showErrorAlert(error: error, vc: self)
+            } else {
+                self.postsCollection = []
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    dispatchGroup.enter()
+                    
+                    let user = self.loadUser(id: data["user"] as! String, dispatchGroup: dispatchGroup)
+
+                    let post = Post(
+                        user: user,
+                        body: data["body"] as! String,
+                        timestamp: data["timestamp"] as! Double
+                    )
+                    self.postsCollection.append(post)
+                }
+                dispatchGroup.notify(queue: .main) {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func loadUser(id: String, dispatchGroup: DispatchGroup) -> User {
+        let userRef = db.collection(K.User.collectionName).document(id)
+        let user = User()
+        userRef.getDocument { (document, error) in
+            if let doc = document, let data = doc.data() {
+                user.firstName = data["firstName"] as! String
+                user.lastName = data["lastName"] as! String
+                user.email = data["email"] as! String
+            }
+            dispatchGroup.leave()
+        }
+        
+        return user
+    }
     
 }

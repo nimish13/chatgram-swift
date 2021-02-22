@@ -121,7 +121,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         let post = postsCollection[indexPath.row]
         cell.postContentLabel.text = post.body
         cell.ownerDisplayLabel.text = "<\(post.user.fullName)>"
-        cell.dateLabel.text = post.displayFormattedDate()
+        cell.dateLabel.text = post.displayDate(for: post.timestamp)
         return cell
     }
     

@@ -10,6 +10,11 @@
 		5B1A0E6325DFD4C80088D23D /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E6225DFD4C80088D23D /* MessageController.swift */; };
 		5B1A0E6825DFD8A30088D23D /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E6625DFD8A30088D23D /* MessageCell.swift */; };
 		5B1A0E6925DFD8A30088D23D /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A0E6725DFD8A30088D23D /* MessageCell.xib */; };
+		5B1A0E8125E3AF290088D23D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E8025E3AF290088D23D /* Message.swift */; };
+		5B1A0E8425E3B2140088D23D /* ChatGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E8325E3B2140088D23D /* ChatGroup.swift */; };
+		5B1A0E8825E3BA320088D23D /* FormattedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E8725E3BA320088D23D /* FormattedDate.swift */; };
+		5B1A0E9225E3CA5E0088D23D /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E9025E3CA5E0088D23D /* ChatCell.swift */; };
+		5B1A0E9325E3CA5E0088D23D /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A0E9125E3CA5E0088D23D /* ChatCell.xib */; };
 		5B2097B425DA58FA00FCC922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B325DA58FA00FCC922 /* AppDelegate.swift */; };
 		5B2097B625DA58FA00FCC922 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B525DA58FA00FCC922 /* SceneDelegate.swift */; };
 		5B2097B825DA58FA00FCC922 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B725DA58FA00FCC922 /* WelcomeController.swift */; };
@@ -38,6 +43,11 @@
 		5B1A0E6225DFD4C80088D23D /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		5B1A0E6625DFD8A30088D23D /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		5B1A0E6725DFD8A30088D23D /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		5B1A0E8025E3AF290088D23D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5B1A0E8325E3B2140088D23D /* ChatGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroup.swift; sourceTree = "<group>"; };
+		5B1A0E8725E3BA320088D23D /* FormattedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedDate.swift; sourceTree = "<group>"; };
+		5B1A0E9025E3CA5E0088D23D /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		5B1A0E9125E3CA5E0088D23D /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		5B2097B025DA58FA00FCC922 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2097B325DA58FA00FCC922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B2097B525DA58FA00FCC922 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1A0E8625E3BA1B0088D23D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5B1A0E8725E3BA320088D23D /* FormattedDate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		5B2097A725DA58FA00FCC922 = {
 			isa = PBXGroup;
 			children = (
@@ -131,8 +149,11 @@
 		5B2097C925DA592300FCC922 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B1A0E8625E3BA1B0088D23D /* Protocols */,
 				5B74A9F725DD089B003A6959 /* Post.swift */,
 				5B74A9FD25DD3054003A6959 /* User.swift */,
+				5B1A0E8025E3AF290088D23D /* Message.swift */,
+				5B1A0E8325E3B2140088D23D /* ChatGroup.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,6 +165,8 @@
 				5B74A9EF25DBFD42003A6959 /* PostCell.xib */,
 				5B1A0E6625DFD8A30088D23D /* MessageCell.swift */,
 				5B1A0E6725DFD8A30088D23D /* MessageCell.xib */,
+				5B1A0E9025E3CA5E0088D23D /* ChatCell.swift */,
+				5B1A0E9125E3CA5E0088D23D /* ChatCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1A0E9325E3CA5E0088D23D /* ChatCell.xib in Resources */,
 				5B2097C025DA58FB00FCC922 /* LaunchScreen.storyboard in Resources */,
 				5B1A0E6925DFD8A30088D23D /* MessageCell.xib in Resources */,
 				5B2097FD25DA8ECA00FCC922 /* GoogleService-Info.plist in Resources */,
@@ -302,11 +326,15 @@
 				5B2097E425DA7ADE00FCC922 /* RegistrationController.swift in Sources */,
 				5B2097B825DA58FA00FCC922 /* WelcomeController.swift in Sources */,
 				5B2097B425DA58FA00FCC922 /* AppDelegate.swift in Sources */,
+				5B1A0E8125E3AF290088D23D /* Message.swift in Sources */,
+				5B1A0E8825E3BA320088D23D /* FormattedDate.swift in Sources */,
 				5B74A9F825DD089B003A6959 /* Post.swift in Sources */,
 				5BB1147525DBCEAE0042CFC8 /* GlobalUtility.swift in Sources */,
 				5BB1143A25DBA92D0042CFC8 /* ChatController.swift in Sources */,
 				5B74A9FE25DD3054003A6959 /* User.swift in Sources */,
+				5B1A0E8425E3B2140088D23D /* ChatGroup.swift in Sources */,
 				5BB1147825DBD0F20042CFC8 /* ProfileController.swift in Sources */,
+				5B1A0E9225E3CA5E0088D23D /* ChatCell.swift in Sources */,
 				5B2097B625DA58FA00FCC922 /* SceneDelegate.swift in Sources */,
 				5B2097D925DA6D4800FCC922 /* LoginController.swift in Sources */,
 				5B74A9F025DBFD42003A6959 /* PostCell.swift in Sources */,

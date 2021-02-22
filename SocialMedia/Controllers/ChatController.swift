@@ -14,6 +14,14 @@ class ChatController: UIViewController {
     let db = Firestore.firestore()
     let dropDown = DropDown()
     var users = [User]()
+    var usersWithCurrentUser = [User]()
+    var usersFetched = false {
+        didSet {
+            if usersFetched {
+                fetchChats()
+            }
+        }
+    }
     var currentUser: User! {
         didSet {
             if currentUser != nil {
@@ -21,12 +29,64 @@ class ChatController: UIViewController {
             }
         }
     }
+    var chats = [ChatGroup]()
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addNewChatButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: K.chatCellNibName, bundle: nil), forCellReuseIdentifier: K.chatCell)
+        tableView.tableFooterView = UIView()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         fetchCurrentUser()
+    }
+    
+    func fetchChats() {
+        chats = []
+        let dispatchGroup = DispatchGroup()
+        
+        self.db.collection(K.ChatGroup.collectionName).whereField(K.ChatGroup.usersFieldName, arrayContains: currentUser.firebaseId).order(by: K.ChatGroup.timestampField, descending: true).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                GlobalUtility.showErrorAlert(error: error, vc: self)
+            } else {
+                for document in querySnapshot!.documents {
+                    dispatchGroup.enter()
+                    let chatGroup = ChatGroup(id: document.documentID)
+                    self.fetchLastChatMessage(chatGroup: chatGroup, dispatchGroup: dispatchGroup)
+                }
+                dispatchGroup.notify(queue: .main) {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func fetchLastChatMessage(chatGroup: ChatGroup, dispatchGroup: DispatchGroup) {
+        db.collection(K.ChatGroup.collectionName).document(chatGroup.firebaseId).collection(K.Message.collectionName).order(by: K.Message.timestampField, descending: true).limit(to: 1).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                GlobalUtility.showErrorAlert(error: error, vc: self)
+            } else {
+                for document in querySnapshot!.documents {
+
+                    let data = document.data()
+                    let optionalSender = self.usersWithCurrentUser.first { $0.firebaseId == data[K.Message.senderFieldName] as! String }
+                    let optionalReceiver = self.usersWithCurrentUser.first { $0.firebaseId == data[K.Message.receiverFieldName] as! String }
+                    if let sender = optionalSender, let receiver = optionalReceiver {
+                        let message = Message(firebaseId: document.documentID, body: data[K.Message.bodyFieldName] as! String, sender: sender, receiver: receiver, timestamp: data[K.Message.timestampField] as! Double)
+                        chatGroup.lastMessage = message
+                        self.chats.append(chatGroup)
+                    }
+                }
+                dispatchGroup.leave()
+            }
+        }
     }
     
     func fetchCurrentUser() {
@@ -50,17 +110,23 @@ class ChatController: UIViewController {
     
     
     func fetchUsers() {
-        db.collection(K.User.collectionName).whereField(K.User.emailField, isNotEqualTo: Auth.auth().currentUser?.email ?? "").getDocuments { (querySnapshot, optionalError) in
-            if let error = optionalError {
-                GlobalUtility.showErrorAlert(error: error, vc: self)
-            } else {
-                for document in querySnapshot!.documents {
-                    let data = document.data()
-                    let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String)
-                    self.users.append(user)
+        if users.isEmpty {
+            db.collection(K.User.collectionName).order(by: K.User.firstNameField, descending: true).getDocuments { (querySnapshot, optionalError) in
+                if let error = optionalError {
+                    GlobalUtility.showErrorAlert(error: error, vc: self)
+                } else {
+                    for document in querySnapshot!.documents {
+                        let data = document.data()
+                        let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String)
+                        self.usersWithCurrentUser.append(user)
+                    }
+                    self.users = self.usersWithCurrentUser.filter { $0.firebaseId != Auth.auth().currentUser?.uid ?? ""}
+                    self.usersFetched = true
+                    self.initDropDown()
                 }
-                self.initDropDown()
             }
+        } else {
+            self.usersFetched = true
         }
     }
     
@@ -75,7 +141,6 @@ class ChatController: UIViewController {
         newViewController.user = user
         newViewController.chatGroupId = chatGroupId
         newViewController.currentUser = currentUser
-        
         navigationController?.pushViewController(newViewController, animated: true)
     }
     
@@ -103,7 +168,10 @@ extension ChatController {
                         
                     } else {
                         var ref: DocumentReference? = nil
-                        let data = [K.ChatGroup.usersFieldName:[currentUserId, user.firebaseId]]
+                        let data: [String: Any] = [
+                            K.ChatGroup.usersFieldName: [currentUserId, user.firebaseId],
+                            K.ChatGroup.timestampField: Date().timeIntervalSince1970
+                        ]
                         ref = self.db.collection(K.ChatGroup.collectionName).addDocument(data: data) { (error) in
                             if let error = error {
                                 GlobalUtility.showErrorAlert(error: error, vc: self)
@@ -117,4 +185,33 @@ extension ChatController {
 
         }
     }
+}
+
+extension ChatController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        chats.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.chatCell, for: indexPath) as! ChatCell
+        let chat = chats[indexPath.row]
+        if let lastMessage = chat.lastMessage {
+            if lastMessage.sender.firebaseId == currentUser.firebaseId {
+                cell.userName.text = lastMessage.receiver.fullName
+            } else {
+                cell.userName.text = lastMessage.sender.fullName
+            }
+            cell.message.text = lastMessage.body
+            cell.timestamp.text = lastMessage.displayDate(for: lastMessage.timestamp)
+        }
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chat = chats[indexPath.row]
+        let user = chat.lastMessage!.sender.firebaseId == currentUser.firebaseId ? chat.lastMessage!.receiver : chat.lastMessage!.sender
+        switchToMessageController(chatGroupId: chat.firebaseId, user: user)
+    }
+    
 }

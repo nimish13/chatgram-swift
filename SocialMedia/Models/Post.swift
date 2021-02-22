@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Post {
+struct Post: FormattedDate {
     var user: User
     let body: String
     let timestamp: Double
@@ -16,13 +16,5 @@ struct Post {
         self.user = user
         self.body = body
         self.timestamp = timestamp
-    }
-    func displayFormattedDate() -> String {
-        let date = Date(timeIntervalSince1970: timestamp)
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short //Set time style
-        dateFormatter.dateStyle = .medium //Set date style
-        dateFormatter.timeZone = .current
-        return dateFormatter.string(from: date)
     }
 }

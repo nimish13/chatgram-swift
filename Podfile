@@ -11,5 +11,6 @@ target 'SocialMedia' do
   pod 'CLTypingLabel'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'DropDown'
   
 end

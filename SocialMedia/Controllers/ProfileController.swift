@@ -49,6 +49,7 @@ class ProfileController: UIViewController {
                 guard let strongSelf = self else { return }
                 if let doc = document, let data = doc.data() {
                     strongSelf.user = User(
+                        firebaseId: doc.documentID,
                         firstName: data["firstName"] as! String,
                         lastName: data["lastName"] as! String,
                         email: data["email"] as! String

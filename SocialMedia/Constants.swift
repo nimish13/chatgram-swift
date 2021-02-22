@@ -6,8 +6,12 @@
 //
 
 struct K {
+    static let defaultErrorMessage = "Something went wrong. Please try again later."
     static let appName = "ChatGram 💬"
     static let postCellIdentifier = "PostCell"
+    static let messageCellNibName = "MessageCell"
+    static let messageControllerStoryBoardIdentifier = "messageViewControllerIdentifier"
+    static let messageCell = "messageCell"
     static let editProfileIdentifier = "editProfile"
     static let postCellNibName = "PostCell"
     static let mainBarIdentifier = "MainTabBarController"
@@ -22,6 +26,11 @@ struct K {
         static let ownerField = "owner"
         static let bodyField = "body"
         static let timestampField = "timestamp"
+    }
+    
+    struct ChatGroup {
+        static let collectionName = "chatGroups"
+        static let usersFieldName = "users"
     }
     
     struct User {

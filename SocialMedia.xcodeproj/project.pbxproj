@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1A0E6325DFD4C80088D23D /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E6225DFD4C80088D23D /* MessageController.swift */; };
+		5B1A0E6825DFD8A30088D23D /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E6625DFD8A30088D23D /* MessageCell.swift */; };
+		5B1A0E6925DFD8A30088D23D /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A0E6725DFD8A30088D23D /* MessageCell.xib */; };
 		5B2097B425DA58FA00FCC922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B325DA58FA00FCC922 /* AppDelegate.swift */; };
 		5B2097B625DA58FA00FCC922 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B525DA58FA00FCC922 /* SceneDelegate.swift */; };
 		5B2097B825DA58FA00FCC922 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B725DA58FA00FCC922 /* WelcomeController.swift */; };
@@ -32,6 +35,9 @@
 
 /* Begin PBXFileReference section */
 		42657162CE9BEDB8D51366AD /* Pods_SocialMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1A0E6225DFD4C80088D23D /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		5B1A0E6625DFD8A30088D23D /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		5B1A0E6725DFD8A30088D23D /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		5B2097B025DA58FA00FCC922 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2097B325DA58FA00FCC922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B2097B525DA58FA00FCC922 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 				5BB1143925DBA92D0042CFC8 /* ChatController.swift */,
 				5BB1147725DBD0F20042CFC8 /* ProfileController.swift */,
 				5B68D03725DE63460010F816 /* EditProfileController.swift */,
+				5B1A0E6225DFD4C80088D23D /* MessageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +142,8 @@
 			children = (
 				5B74A9EE25DBFD42003A6959 /* PostCell.swift */,
 				5B74A9EF25DBFD42003A6959 /* PostCell.xib */,
+				5B1A0E6625DFD8A30088D23D /* MessageCell.swift */,
+				5B1A0E6725DFD8A30088D23D /* MessageCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B2097C025DA58FB00FCC922 /* LaunchScreen.storyboard in Resources */,
+				5B1A0E6925DFD8A30088D23D /* MessageCell.xib in Resources */,
 				5B2097FD25DA8ECA00FCC922 /* GoogleService-Info.plist in Resources */,
 				5B74A9F125DBFD42003A6959 /* PostCell.xib in Resources */,
 				5B2097BD25DA58FB00FCC922 /* Assets.xcassets in Resources */,
@@ -302,7 +312,9 @@
 				5B74A9F025DBFD42003A6959 /* PostCell.swift in Sources */,
 				5B68D03825DE63460010F816 /* EditProfileController.swift in Sources */,
 				5B74A9FB25DD2BAE003A6959 /* RunTimeError.swift in Sources */,
+				5B1A0E6825DFD8A30088D23D /* MessageCell.swift in Sources */,
 				5B2097D425DA649400FCC922 /* Constants.swift in Sources */,
+				5B1A0E6325DFD4C80088D23D /* MessageController.swift in Sources */,
 				5B2097E725DA835B00FCC922 /* PostController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

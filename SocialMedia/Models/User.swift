@@ -9,6 +9,7 @@ import Foundation
 
 class User {
     
+    var firebaseId: String
     var firstName: String
     var lastName: String
     var email: String
@@ -16,14 +17,15 @@ class User {
         "\(firstName) \(lastName)"
     }
     
-    init(firstName: String, lastName: String, email: String) {
+    init(firebaseId: String, firstName: String, lastName: String, email: String) {
+        self.firebaseId = firebaseId
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
     }
     
     convenience init() {
-        self.init(firstName: "Anonymous", lastName: "User", email: "ghost@chatgram.com")
+        self.init(firebaseId: "", firstName: "Anonymous", lastName: "User", email: "ghost@chatgram.com")
     }
     
 }

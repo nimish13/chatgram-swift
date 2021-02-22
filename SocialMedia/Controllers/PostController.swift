@@ -127,6 +127,7 @@ extension PostController {
         let user = User()
         userRef.getDocument { (document, error) in
             if let doc = document, let data = doc.data() {
+                user.firebaseId = doc.documentID
                 user.firstName = data["firstName"] as! String
                 user.lastName = data["lastName"] as! String
                 user.email = data["email"] as! String

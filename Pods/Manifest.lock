@@ -219,6 +219,7 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - CLTypingLabel (0.4.0)
+  - DropDown (2.3.13)
   - Firebase/Auth (7.5.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.5.0)
@@ -305,6 +306,7 @@ PODS:
 
 DEPENDENCIES:
   - CLTypingLabel
+  - DropDown
   - Firebase/Auth
   - Firebase/Firestore
 
@@ -313,6 +315,7 @@ SPEC REPOS:
     - abseil
     - BoringSSL-GRPC
     - CLTypingLabel
+    - DropDown
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -331,6 +334,7 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   CLTypingLabel: 95a7d1faf7e3d1d952cd11cb0491d17d80c50934
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Firebase: fd5e4d2b756292c6e7ee6faac1eb320225d6e97e
   FirebaseAuth: 13585612f93d671962682007ea8ded1d60ef0762
   FirebaseCore: 06a2b68af8901f2244eb989419eb89edc3789b4d
@@ -345,6 +349,6 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 5469435fdc6169b3de663a4e2a5df2204860f836
+PODFILE CHECKSUM: d5a652bf265422e1a2a659bbba657cf45c0a1a04
 
 COCOAPODS: 1.10.1

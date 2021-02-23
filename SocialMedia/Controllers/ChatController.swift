@@ -11,6 +11,7 @@ import Firebase
 
 class ChatController: UIViewController {
     
+    let spinner = SpinnerViewController()
     let db = Firestore.firestore()
     let dropDown = DropDown()
     var users = [User]()
@@ -34,18 +35,21 @@ class ChatController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addNewChatButton: UIBarButtonItem!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: K.chatCellNibName, bundle: nil), forCellReuseIdentifier: K.chatCell)
         tableView.tableFooterView = UIView()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        createSpinnerView()
+        showActivityIndicator(with: spinner)
         fetchCurrentUser()
+        
     }
     
     func fetchChats() {
@@ -62,6 +66,7 @@ class ChatController: UIViewController {
                     self.fetchLastChatMessage(chatGroup: chatGroup, dispatchGroup: dispatchGroup)
                 }
                 dispatchGroup.notify(queue: .main) {
+                    self.hideActivityIndication(with: self.spinner)
                     self.tableView.reloadData()
                 }
             }

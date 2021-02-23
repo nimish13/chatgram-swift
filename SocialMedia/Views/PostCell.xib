@@ -23,13 +23,13 @@
                                 <rect key="frame" x="10" y="0.0" width="410" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Wpv-bE-VPf">
-                                        <rect key="frame" x="10" y="10" width="50" height="40"/>
+                                        <rect key="frame" x="10" y="10" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="ZYu-XC-8GY"/>
+                                            <constraint firstAttribute="width" constant="40" id="ZYu-XC-8GY"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="nimishg13@sassassaassaasas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHW-4c-yrL" userLabel="sender label">
-                                        <rect key="frame" x="62" y="10" width="222" height="40"/>
+                                        <rect key="frame" x="52" y="10" width="232" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

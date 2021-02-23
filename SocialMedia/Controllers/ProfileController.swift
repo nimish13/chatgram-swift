@@ -12,6 +12,7 @@ import InitialsImageView
 class ProfileController: UIViewController {
     
     let db = Firestore.firestore()
+    let spinner = SpinnerViewController()
     var postsCollection = [Post]()
     
     var user: User! {
@@ -40,6 +41,7 @@ class ProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showActivityIndicator(with: spinner)
         fetchUser()
     }
     
@@ -86,6 +88,7 @@ class ProfileController: UIViewController {
                     )
                     strongSelf.postsCollection.append(post)
                     DispatchQueue.main.async {
+                        strongSelf.hideActivityIndication(with: strongSelf.spinner)
                         strongSelf.tableView.reloadData()
                     }
                 }

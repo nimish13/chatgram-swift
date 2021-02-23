@@ -11,6 +11,7 @@ import Firebase
 class PostController: UIViewController {
     
     let db = Firestore.firestore()
+    let spinner = SpinnerViewController()
     
     var postsCollection = [Post]()
     
@@ -31,9 +32,12 @@ class PostController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: K.postCellNibName, bundle: nil), forCellReuseIdentifier: K.postCellIdentifier)
         tableView.tableFooterView = UIView()
-        loadPosts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadPosts()
+    }
     @IBAction func postButtonPressed(_ sender: UIButton) {
         if let content = feedTextView.text, content.count > 0 {
             let data: [String : Any] = [
@@ -96,6 +100,7 @@ extension PostController: UITableViewDelegate, UITableViewDataSource {
 // MARK: Add Methods to fetch Posts and user for each Post using dispatchGroup
 extension PostController {
     func loadPosts() {
+        showActivityIndicator(with: spinner)
         let dispatchGroup = DispatchGroup()
         
         db.collection(K.Post.collectionName).order(by: K.Post.timestampField, descending: true).addSnapshotListener { (querySnapshot, optionalError) in
@@ -117,6 +122,7 @@ extension PostController {
                     self.postsCollection.append(post)
                 }
                 dispatchGroup.notify(queue: .main) {
+                    self.hideActivityIndication(with: self.spinner)
                     self.tableView.reloadData()
                 }
             }

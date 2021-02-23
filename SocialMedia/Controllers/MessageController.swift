@@ -43,7 +43,7 @@ class MessageController: UIViewController {
                     GlobalUtility.showErrorAlert(error: error, vc: self)
                 } else {
                     self.view.endEditing(true)
-                    self.reloadMessages()
+//                    self.reloadMessages()
                     self.messageField.text = ""
                 }
             }
@@ -56,7 +56,7 @@ class MessageController: UIViewController {
     }
     
     func loadMessages() {
-        db.collection(K.ChatGroup.collectionName).document(chatGroupId).collection(K.Message.collectionName).order(by: K.Message.timestampField, descending: false).getDocuments() { (querySnapshot, optionaError) in
+        db.collection(K.ChatGroup.collectionName).document(chatGroupId).collection(K.Message.collectionName).order(by: K.Message.timestampField, descending: false).addSnapshotListener() { (querySnapshot, optionaError) in
             if let error = optionaError {
                 GlobalUtility.showErrorAlert(error: error, vc: self)
             } else {

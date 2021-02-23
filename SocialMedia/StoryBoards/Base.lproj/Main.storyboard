@@ -577,6 +577,7 @@
                     <connections>
                         <outlet property="firstNameField" destination="eKm-99-BuD" id="WEK-E7-8Bg"/>
                         <outlet property="lastNameField" destination="FvO-Kp-02q" id="Byg-zb-Z9B"/>
+                        <outlet property="userImageView" destination="wPm-mP-uIb" id="it4-jx-5oO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Hk-jQ-IJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,11 +13,13 @@ class EditProfileController: UIViewController {
     var user: User!
     let db = Firestore.firestore()
     
+    @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userImageView.setImageForName(user.fullName, backgroundColor: UIColor(hex: user.hexcode), circular: true, textAttributes: nil)
         firstNameField.text = user.firstName
         lastNameField.text = user.lastName
     }
@@ -27,13 +29,11 @@ class EditProfileController: UIViewController {
             db.collection(K.User.collectionName).document(Auth.auth().currentUser!.uid).updateData([
                 K.User.firstNameField: firstName,
                 K.User.lastNameField: lastName
-//                K.User.emailField: user.email
             ]) { optionalError in
                 if let error = optionalError {
                     GlobalUtility.showErrorAlert(error: error, vc: self)
                 } else {
                     self.navigationController?.popToRootViewController(animated: true)
-//                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }

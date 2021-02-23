@@ -13,5 +13,6 @@ target 'SocialMedia' do
   pod 'Firebase/Firestore'
   pod 'DropDown'
   pod 'IQKeyboardManagerSwift'
+  pod 'InitialsImageView'
   
 end

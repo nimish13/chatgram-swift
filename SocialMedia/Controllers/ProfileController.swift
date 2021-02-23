@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import InitialsImageView
 
 class ProfileController: UIViewController {
     
@@ -17,6 +18,7 @@ class ProfileController: UIViewController {
         didSet {
             if user != nil {
                 loadPosts()
+                profilePhotoImageView.setImageForName(user.fullName, backgroundColor: UIColor(hex: user.hexcode), circular: true, textAttributes: nil)
             }
         }
     }
@@ -50,9 +52,10 @@ class ProfileController: UIViewController {
                 if let doc = document, let data = doc.data() {
                     strongSelf.user = User(
                         firebaseId: doc.documentID,
-                        firstName: data["firstName"] as! String,
-                        lastName: data["lastName"] as! String,
-                        email: data["email"] as! String
+                        firstName: data[K.User.firstNameField] as! String,
+                        lastName: data[K.User.lastNameField] as! String,
+                        email: data[K.User.emailField] as! String,
+                        hexcode: data[K.User.hexcodeField] as! String
                     )
                     DispatchQueue.main.async {
                         strongSelf.nameLabel.text = strongSelf.user.fullName
@@ -121,6 +124,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         let post = postsCollection[indexPath.row]
         cell.postContentLabel.text = post.body
         cell.ownerDisplayLabel.text = "<\(post.user.fullName)>"
+        cell.userImageView.setImageForName(post.user.fullName, backgroundColor: UIColor(hex: post.user.hexcode), circular: true, textAttributes: nil)
         cell.dateLabel.text = post.displayDate(for: post.timestamp)
         return cell
     }

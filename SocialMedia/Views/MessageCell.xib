@@ -84,6 +84,7 @@
             <connections>
                 <outlet property="chatUserImageView" destination="8kO-B1-m5R" id="fUd-Xw-32B"/>
                 <outlet property="currentUserImageView" destination="pjq-sR-KNF" id="2Dx-XF-Q2l"/>
+                <outlet property="messageBubble" destination="r5x-Ls-MJe" id="3fZ-vf-KnN"/>
                 <outlet property="messageLabel" destination="rlu-Mm-VF6" id="PFd-N7-BFE"/>
                 <outlet property="messageSentAtLabel" destination="5Ym-bh-60y" id="A6D-bS-ULS"/>
             </connections>

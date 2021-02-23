@@ -43,6 +43,7 @@ struct K {
         static let firstNameField = "firstName"
         static let lastNameField = "lastName"
         static let emailField = "email"
+        static let hexcodeField = "hexcode"
     }
     
     struct Message {

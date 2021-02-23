@@ -13,19 +13,21 @@ class User {
     var firstName: String
     var lastName: String
     var email: String
+    var hexcode: String
     var fullName: String {
         "\(firstName) \(lastName)"
     }
     
-    init(firebaseId: String, firstName: String, lastName: String, email: String) {
+    init(firebaseId: String, firstName: String, lastName: String, email: String, hexcode: String) {
         self.firebaseId = firebaseId
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
+        self.hexcode = hexcode
     }
     
     convenience init() {
-        self.init(firebaseId: "", firstName: "Anonymous", lastName: "User", email: "ghost@chatgram.com")
+        self.init(firebaseId: "", firstName: "Anonymous", lastName: "User", email: "ghost@chatgram.com", hexcode: "#ABEBC6")
     }
     
 }

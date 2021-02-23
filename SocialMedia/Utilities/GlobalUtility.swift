@@ -31,4 +31,12 @@ struct GlobalUtility {
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(controller)
     }
     
+    static func randomHexCode(length: Int = 6) -> String{
+        let possibleValues = ["1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+        var hexValue = "#"
+        for _ in 0..<length {
+            hexValue += possibleValues.randomElement()!
+        }
+        return hexValue
+    }    
 }

@@ -83,6 +83,7 @@ extension PostController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.postCellIdentifier, for: indexPath) as! PostCell
         let post = postsCollection[indexPath.row]
         cell.postContentLabel.text = post.body
+        cell.userImageView.setImageForName(post.user.fullName, backgroundColor: UIColor(hex: post.user.hexcode), circular: true, textAttributes: nil)
         cell.ownerDisplayLabel.text = "<\(post.user.fullName)>"
         cell.dateLabel.text = post.displayDate(for: post.timestamp)
         return cell
@@ -131,6 +132,7 @@ extension PostController {
                 user.firstName = data["firstName"] as! String
                 user.lastName = data["lastName"] as! String
                 user.email = data["email"] as! String
+                user.hexcode = data[K.User.hexcodeField] as! String
             }
             dispatchGroup.leave()
         }

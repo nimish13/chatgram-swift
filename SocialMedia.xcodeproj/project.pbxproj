@@ -15,6 +15,7 @@
 		5B1A0E8825E3BA320088D23D /* FormattedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E8725E3BA320088D23D /* FormattedDate.swift */; };
 		5B1A0E9225E3CA5E0088D23D /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0E9025E3CA5E0088D23D /* ChatCell.swift */; };
 		5B1A0E9325E3CA5E0088D23D /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A0E9125E3CA5E0088D23D /* ChatCell.xib */; };
+		5B1A0EAD25E4EAFD0088D23D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A0EAC25E4EAFD0088D23D /* UIColorExtension.swift */; };
 		5B2097B425DA58FA00FCC922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B325DA58FA00FCC922 /* AppDelegate.swift */; };
 		5B2097B625DA58FA00FCC922 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B525DA58FA00FCC922 /* SceneDelegate.swift */; };
 		5B2097B825DA58FA00FCC922 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2097B725DA58FA00FCC922 /* WelcomeController.swift */; };
@@ -48,6 +49,7 @@
 		5B1A0E8725E3BA320088D23D /* FormattedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedDate.swift; sourceTree = "<group>"; };
 		5B1A0E9025E3CA5E0088D23D /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		5B1A0E9125E3CA5E0088D23D /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		5B1A0EAC25E4EAFD0088D23D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		5B2097B025DA58FA00FCC922 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2097B325DA58FA00FCC922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B2097B525DA58FA00FCC922 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		5B1A0EAB25E4EAE60088D23D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B1A0EAC25E4EAFD0088D23D /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5B2097A725DA58FA00FCC922 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		5B2097B225DA58FA00FCC922 /* SocialMedia */ = {
 			isa = PBXGroup;
 			children = (
+				5B1A0EAB25E4EAE60088D23D /* Extensions */,
 				5B74A9ED25DBFD16003A6959 /* StoryBoards */,
 				5BB1147325DBCE740042CFC8 /* Utilities */,
 				5B2097CB25DA594100FCC922 /* Views */,
@@ -342,6 +353,7 @@
 				5B74A9FB25DD2BAE003A6959 /* RunTimeError.swift in Sources */,
 				5B1A0E6825DFD8A30088D23D /* MessageCell.swift in Sources */,
 				5B2097D425DA649400FCC922 /* Constants.swift in Sources */,
+				5B1A0EAD25E4EAFD0088D23D /* UIColorExtension.swift in Sources */,
 				5B1A0E6325DFD4C80088D23D /* MessageController.swift in Sources */,
 				5B2097E725DA835B00FCC922 /* PostController.swift in Sources */,
 			);

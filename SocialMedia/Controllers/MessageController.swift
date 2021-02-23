@@ -109,6 +109,8 @@ extension MessageController: UITableViewDelegate, UITableViewDataSource {
             cell.currentUserImageView.isHidden = true
             cell.chatUserImageView.isHidden = false
         }
+        cell.currentUserImageView.setImageForName(currentUser.fullName, backgroundColor: UIColor(hex: currentUser.hexcode), circular: true, textAttributes: nil)
+        cell.chatUserImageView.setImageForName(user.fullName, backgroundColor: UIColor(hex: user.hexcode), circular: true, textAttributes: nil)
         cell.messageSentAtLabel.text = message.displayDate(for: message.timestamp)
         return cell
     }

@@ -41,7 +41,8 @@ class RegistrationController: UIViewController {
         db.collection(K.User.collectionName).document(authResult.user.uid).setData([
             K.User.firstNameField: firstname,
             K.User.lastNameField: lastName,
-            K.User.emailField: authResult.user.email!
+            K.User.emailField: authResult.user.email!,
+            K.User.hexcodeField: GlobalUtility.randomHexCode()
         ]) { optionalError in
             if let error = optionalError {
                 GlobalUtility.showErrorAlert(error: error, vc: self)

@@ -98,9 +98,10 @@ class ChatController: UIViewController {
                 if let doc = document, let data = doc.data() {
                     strongSelf.currentUser = User(
                         firebaseId: doc.documentID,
-                        firstName: data["firstName"] as! String,
-                        lastName: data["lastName"] as! String,
-                        email: data["email"] as! String
+                        firstName: data[K.User.firstNameField] as! String,
+                        lastName: data[K.User.lastNameField] as! String,
+                        email: data[K.User.emailField] as! String,
+                        hexcode: data[K.User.hexcodeField] as! String
                     )
                 }
             }
@@ -117,7 +118,7 @@ class ChatController: UIViewController {
                 } else {
                     for document in querySnapshot!.documents {
                         let data = document.data()
-                        let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String)
+                        let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String, hexcode:  data[K.User.hexcodeField] as! String)
                         self.usersWithCurrentUser.append(user)
                     }
                     self.users = self.usersWithCurrentUser.filter { $0.firebaseId != Auth.auth().currentUser?.uid ?? ""}
@@ -198,8 +199,10 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
         if let lastMessage = chat.lastMessage {
             if lastMessage.sender.firebaseId == currentUser.firebaseId {
                 cell.userName.text = lastMessage.receiver.fullName
+                cell.userImageView.setImageForName(lastMessage.receiver.fullName, backgroundColor: UIColor(hex: lastMessage.receiver.hexcode), circular: true, textAttributes: nil)
             } else {
                 cell.userName.text = lastMessage.sender.fullName
+                cell.userImageView.setImageForName(lastMessage.sender.fullName, backgroundColor: UIColor(hex: lastMessage.sender.hexcode), circular: true, textAttributes: nil)
             }
             cell.message.text = lastMessage.body
             cell.timestamp.text = lastMessage.displayDate(for: lastMessage.timestamp)

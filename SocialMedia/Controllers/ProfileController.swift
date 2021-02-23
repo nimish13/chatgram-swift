@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import InitialsImageView
+import SwipeCellKit
 
 class ProfileController: UIViewController {
     
@@ -82,6 +83,7 @@ class ProfileController: UIViewController {
                     let data = document.data()
 
                     let post = Post(
+                        firebaseId: document.documentID,
                         user: strongSelf.user,
                         body: data["body"] as! String,
                         timestamp: data["timestamp"] as! Double
@@ -124,13 +126,35 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.postCellIdentifier, for: indexPath) as! PostCell
+        cell.delegate = self
         let post = postsCollection[indexPath.row]
         cell.postContentLabel.text = post.body
-        cell.ownerDisplayLabel.text = "<\(post.user.fullName)>"
+        cell.ownerDisplayLabel.text = post.user.fullName
         cell.userImageView.setImageForName(post.user.fullName, backgroundColor: UIColor(hex: post.user.hexcode), circular: true, textAttributes: nil)
         cell.dateLabel.text = post.displayDate(for: post.timestamp)
         return cell
     }
-    
-    
+}
+
+extension ProfileController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            
+            
+            let post = self.postsCollection[indexPath.row]
+            self.db.collection(K.Post.collectionName).document(post.firebaseId).delete { (optionalError) in
+                if let error = optionalError {
+                    GlobalUtility.showErrorAlert(error: error, vc: self)
+                }
+            }
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete-icon")
+        
+        return [deleteAction]
+    }
 }

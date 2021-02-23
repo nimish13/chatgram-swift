@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NGs-Ya-NLL" userLabel="Main Stack View">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="246"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="236"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GuW-W0-Ecu" userLabel="Top Stack View">
                                 <rect key="frame" x="10" y="0.0" width="410" height="50"/>
@@ -28,9 +28,9 @@
                                             <constraint firstAttribute="width" constant="40" id="ZYu-XC-8GY"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="nimishg13@sassassaassaasas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHW-4c-yrL" userLabel="sender label">
-                                        <rect key="frame" x="52" y="10" width="232" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Nimish Gupta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHW-4c-yrL" userLabel="sender label">
+                                        <rect key="frame" x="55" y="10" width="229" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -43,7 +43,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="l1e-7p-Nvs" firstAttribute="top" secondItem="GuW-W0-Ecu" secondAttribute="top" constant="10" id="4xn-dH-aJs"/>
-                                    <constraint firstItem="ZHW-4c-yrL" firstAttribute="leading" secondItem="Wpv-bE-VPf" secondAttribute="trailing" constant="2" id="9fr-D8-pL2"/>
+                                    <constraint firstItem="ZHW-4c-yrL" firstAttribute="leading" secondItem="Wpv-bE-VPf" secondAttribute="trailing" constant="5" id="9fr-D8-pL2"/>
                                     <constraint firstItem="l1e-7p-Nvs" firstAttribute="leading" secondItem="ZHW-4c-yrL" secondAttribute="trailing" constant="10" id="JS5-mH-WFP"/>
                                     <constraint firstAttribute="height" constant="50" id="KPF-ui-zVk"/>
                                     <constraint firstItem="l1e-7p-Nvs" firstAttribute="leading" secondItem="ZHW-4c-yrL" secondAttribute="trailing" constant="10" id="LMN-Ne-uTP"/>
@@ -54,11 +54,11 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZg-4v-37F">
-                                <rect key="frame" x="10" y="70" width="410" height="122"/>
+                                <rect key="frame" x="10" y="70" width="410" height="107.5"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -76,7 +76,7 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</string>
                 <constraints>
                     <constraint firstItem="NGs-Ya-NLL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1gE-Fa-vVJ"/>
                     <constraint firstAttribute="trailing" secondItem="NGs-Ya-NLL" secondAttribute="trailing" id="2RY-hM-qY2"/>
-                    <constraint firstAttribute="bottom" secondItem="NGs-Ya-NLL" secondAttribute="bottom" id="dUF-1r-nrY"/>
+                    <constraint firstAttribute="bottom" secondItem="NGs-Ya-NLL" secondAttribute="bottom" constant="10" id="dUF-1r-nrY"/>
                     <constraint firstItem="NGs-Ya-NLL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tzV-kd-ab7"/>
                 </constraints>
             </tableViewCellContentView>

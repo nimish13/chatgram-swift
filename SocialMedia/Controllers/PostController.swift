@@ -88,7 +88,7 @@ extension PostController: UITableViewDelegate, UITableViewDataSource {
         let post = postsCollection[indexPath.row]
         cell.postContentLabel.text = post.body
         cell.userImageView.setImageForName(post.user.fullName, backgroundColor: UIColor(hex: post.user.hexcode), circular: true, textAttributes: nil)
-        cell.ownerDisplayLabel.text = "<\(post.user.fullName)>"
+        cell.ownerDisplayLabel.text = post.user.fullName
         cell.dateLabel.text = post.displayDate(for: post.timestamp)
         return cell
     }
@@ -115,6 +115,7 @@ extension PostController {
                     let user = self.loadUser(id: data["user"] as! String, dispatchGroup: dispatchGroup)
 
                     let post = Post(
+                        firebaseId: document.documentID,
                         user: user,
                         body: data["body"] as! String,
                         timestamp: data["timestamp"] as! Double
@@ -135,9 +136,9 @@ extension PostController {
         userRef.getDocument { (document, error) in
             if let doc = document, let data = doc.data() {
                 user.firebaseId = doc.documentID
-                user.firstName = data["firstName"] as! String
-                user.lastName = data["lastName"] as! String
-                user.email = data["email"] as! String
+                user.firstName = data[K.User.firstNameField] as! String
+                user.lastName = data[K.User.lastNameField] as! String
+                user.email = data[K.User.emailField] as! String
                 user.hexcode = data[K.User.hexcodeField] as! String
             }
             dispatchGroup.leave()
@@ -147,3 +148,4 @@ extension PostController {
     }
     
 }
+

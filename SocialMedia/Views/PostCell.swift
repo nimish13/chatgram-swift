@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class PostCell: UITableViewCell {
+class PostCell: SwipeTableViewCell {
 
     @IBOutlet weak var postContentLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!

@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SwipeCellKit
 
 class MessageController: UIViewController {
     
@@ -101,12 +102,18 @@ extension MessageController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.messageCell, for: indexPath) as! MessageCell
         let message = messages[indexPath.row]
+        cell.delegate = self
         cell.messageLabel.text = message.body
+        cell.messageSentAtLabel.isHidden = true
         if message.sender.firebaseId == currentUser.firebaseId {
             cell.chatUserImageView.isHidden = true
             cell.currentUserImageView.isHidden = false
+            cell.messageLabel.textColor = UIColor.black
+            cell.messageBubble.backgroundColor = UIColor(named: K.Message.chatMeColor)
         } else {
             cell.currentUserImageView.isHidden = true
+            cell.messageBubble.backgroundColor = UIColor(named: K.Message.chatYouColor)
+            cell.messageLabel.textColor = UIColor.white
             cell.chatUserImageView.isHidden = false
         }
         cell.currentUserImageView.setImageForName(currentUser.fullName, backgroundColor: UIColor(hex: currentUser.hexcode), circular: true, textAttributes: nil)
@@ -114,4 +121,42 @@ extension MessageController: UITableViewDelegate, UITableViewDataSource {
         cell.messageSentAtLabel.text = message.displayDate(for: message.timestamp)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell: MessageCell = tableView.cellForRow(at: indexPath) as! MessageCell
+        cell.messageSentAtLabel.isHidden = false
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell: MessageCell = tableView.cellForRow(at: indexPath) as! MessageCell
+        cell.messageSentAtLabel.isHidden = true
+    }
+}
+
+extension MessageController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            
+            
+            let message = self.messages[indexPath.row]
+            self.db.collection(K.ChatGroup.collectionName).document(self.chatGroupId).collection(K.Message.collectionName).document(message.firebaseId).delete { (optionalError) in
+                if let error = optionalError {
+                    GlobalUtility.showErrorAlert(error: error, vc: self)
+                } else {
+                    self.messages.remove(at: indexPath.row)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete-icon")
+        
+        return [deleteAction]
+    }
+    
+    
 }

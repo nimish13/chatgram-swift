@@ -305,6 +305,7 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
   - CLTypingLabel
@@ -313,6 +314,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - InitialsImageView
   - IQKeyboardManagerSwift
+  - SwipeCellKit
 
 SPEC REPOS:
   trunk:
@@ -335,6 +337,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -356,7 +359,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 12629813f578d0b0cf0e392971bf499ee0b9fedc
+PODFILE CHECKSUM: e625bf8f4ca228e4ec55aa3ca199a6c793966aad
 
 COCOAPODS: 1.10.1

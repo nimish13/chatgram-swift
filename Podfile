@@ -14,5 +14,5 @@ target 'SocialMedia' do
   pod 'DropDown'
   pod 'IQKeyboardManagerSwift'
   pod 'InitialsImageView'
-  
+  pod 'SwipeCellKit'
 end

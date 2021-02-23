@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class MessageCell: UITableViewCell {
+class MessageCell: SwipeTableViewCell {
 
     @IBOutlet weak var messageBubble: UIView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -18,7 +19,6 @@ class MessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         messageBubble.layer.cornerRadius = messageBubble.frame.size.height / 5
-//        messageBubble.backgroundColor = UIColor.red
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

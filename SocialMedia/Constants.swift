@@ -47,6 +47,8 @@ struct K {
     }
     
     struct Message {
+        static let chatMeColor = "ChatMe"
+        static let chatYouColor = "ChatYou"
         static let collectionName = "messages"
         static let senderFieldName = "sender"
         static let receiverFieldName = "receiver"

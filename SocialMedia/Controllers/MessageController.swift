@@ -87,7 +87,7 @@ class MessageController: UIViewController {
 
                 self.tableView.reloadData()
                 let index = IndexPath(row: self.messages.count - 1, section: 0)
-                self.tableView.scrollToRow(at: index, at: .bottom, animated: true)
+                self.tableView.scrollToRow(at: index, at: .bottom, animated: false)
             }
         }
     }

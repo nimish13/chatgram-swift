@@ -46,7 +46,7 @@ class ChatController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        createSpinnerView()
+        //        createSpinnerView()
         showActivityIndicator(with: spinner)
         fetchCurrentUser()
         
@@ -79,7 +79,7 @@ class ChatController: UIViewController {
                 GlobalUtility.showErrorAlert(error: error, vc: self)
             } else {
                 for document in querySnapshot!.documents {
-
+                    
                     let data = document.data()
                     let optionalSender = self.usersWithCurrentUser.first { $0.firebaseId == data[K.Message.senderFieldName] as! String }
                     let optionalReceiver = self.usersWithCurrentUser.first { $0.firebaseId == data[K.Message.receiverFieldName] as! String }
@@ -110,30 +110,29 @@ class ChatController: UIViewController {
                     )
                 }
             }
-
+            
         }
     }
     
     
     func fetchUsers() {
-        if users.isEmpty {
-            db.collection(K.User.collectionName).order(by: K.User.firstNameField, descending: true).getDocuments { (querySnapshot, optionalError) in
-                if let error = optionalError {
-                    GlobalUtility.showErrorAlert(error: error, vc: self)
-                } else {
-                    for document in querySnapshot!.documents {
-                        let data = document.data()
-                        let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String, hexcode:  data[K.User.hexcodeField] as! String)
-                        self.usersWithCurrentUser.append(user)
-                    }
-                    self.users = self.usersWithCurrentUser.filter { $0.firebaseId != Auth.auth().currentUser?.uid ?? ""}
-                    self.usersFetched = true
-                    self.initDropDown()
+        users = []
+        usersWithCurrentUser = []
+        db.collection(K.User.collectionName).order(by: K.User.firstNameField, descending: true).getDocuments { (querySnapshot, optionalError) in
+            if let error = optionalError {
+                GlobalUtility.showErrorAlert(error: error, vc: self)
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String, hexcode:  data[K.User.hexcodeField] as! String)
+                    self.usersWithCurrentUser.append(user)
                 }
+                self.users = self.usersWithCurrentUser.filter { $0.firebaseId != Auth.auth().currentUser?.uid ?? ""}
+                self.usersFetched = true
+                self.initDropDown()
             }
-        } else {
-            self.usersFetched = true
         }
+        
     }
     
     @IBAction func addNewChatPressed(_ sender: UIBarButtonItem) {
@@ -188,7 +187,7 @@ extension ChatController {
                     }
                 }
             }
-
+            
         }
     }
 }
@@ -212,7 +211,7 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
             cell.message.text = lastMessage.body
             cell.timestamp.text = lastMessage.displayDate(for: lastMessage.timestamp)
         }
-
+        
         return cell
     }
     

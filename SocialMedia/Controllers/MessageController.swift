@@ -137,6 +137,10 @@ extension MessageController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
+        if messages[indexPath.row].sender.firebaseId != currentUser.firebaseId {
+            return nil
+        }
+        
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
             

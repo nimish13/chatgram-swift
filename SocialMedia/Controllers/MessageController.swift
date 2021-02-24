@@ -44,23 +44,20 @@ class MessageController: UIViewController {
                     GlobalUtility.showErrorAlert(error: error, vc: self)
                 } else {
                     self.view.endEditing(true)
-//                    self.reloadMessages()
                     self.messageField.text = ""
                 }
             }
         }
     }
     
-    func reloadMessages() {
-        messages = []
-        loadMessages()
-    }
     
     func loadMessages() {
         db.collection(K.ChatGroup.collectionName).document(chatGroupId).collection(K.Message.collectionName).order(by: K.Message.timestampField, descending: false).addSnapshotListener() { (querySnapshot, optionaError) in
+            
             if let error = optionaError {
                 GlobalUtility.showErrorAlert(error: error, vc: self)
             } else {
+                self.messages = []
                 for document in querySnapshot!.documents {
                     
                     let data = document.data()

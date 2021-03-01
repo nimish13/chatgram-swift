@@ -22,4 +22,19 @@ extension UIViewController {
         spinner.removeFromParent()
     }
     
+    func setProfileImage(for additionalUser: User, imageView: UIImageView) {
+        if let imageUrl = additionalUser.profileUrl {
+            imageView.maskCircle()
+            imageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "placeholder"))
+            
+        } else {
+            setImageFromName(user: additionalUser, imageView: imageView)
+        }
+    }
+    
+    
+    func setImageFromName(user: User, imageView: UIImageView) {
+        imageView.setImageForName(user.fullName, backgroundColor: UIColor(hex: user.hexcode), circular: true, textAttributes: nil)
+    }
+    
 }

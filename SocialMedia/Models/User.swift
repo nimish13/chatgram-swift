@@ -10,6 +10,7 @@ import Foundation
 class User {
     
     var firebaseId: String
+    var profileUrl: String?
     var firstName: String
     var lastName: String
     var email: String
@@ -18,12 +19,13 @@ class User {
         "\(firstName) \(lastName)"
     }
     
-    init(firebaseId: String, firstName: String, lastName: String, email: String, hexcode: String) {
+    init(firebaseId: String, firstName: String, lastName: String, email: String, hexcode: String, profileUrl: String? = nil) {
         self.firebaseId = firebaseId
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.hexcode = hexcode
+        self.profileUrl = profileUrl
     }
     
     convenience init() {

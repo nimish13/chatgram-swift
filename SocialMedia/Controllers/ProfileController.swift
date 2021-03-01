@@ -20,7 +20,7 @@ class ProfileController: UIViewController {
         didSet {
             if user != nil {
                 loadPosts()
-                profilePhotoImageView.setImageForName(user.fullName, backgroundColor: UIColor(hex: user.hexcode), circular: true, textAttributes: nil)
+                setProfileImage(for: user, imageView: profilePhotoImageView)
             }
         }
     }
@@ -58,7 +58,8 @@ class ProfileController: UIViewController {
                         firstName: data[K.User.firstNameField] as! String,
                         lastName: data[K.User.lastNameField] as! String,
                         email: data[K.User.emailField] as! String,
-                        hexcode: data[K.User.hexcodeField] as! String
+                        hexcode: data[K.User.hexcodeField] as! String,
+                        profileUrl: data[K.User.profileURLField] as? String
                     )
                     DispatchQueue.main.async {
                         strongSelf.nameLabel.text = strongSelf.user.fullName
@@ -130,7 +131,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         let post = postsCollection[indexPath.row]
         cell.postContentLabel.text = post.body
         cell.ownerDisplayLabel.text = post.user.fullName
-        cell.userImageView.setImageForName(post.user.fullName, backgroundColor: UIColor(hex: post.user.hexcode), circular: true, textAttributes: nil)
+        setProfileImage(for: post.user, imageView: cell.userImageView)
         cell.dateLabel.text = post.displayDate(for: post.timestamp)
         return cell
     }

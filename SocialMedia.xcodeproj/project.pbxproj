@@ -35,6 +35,7 @@
 		5B74A9F825DD089B003A6959 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A9F725DD089B003A6959 /* Post.swift */; };
 		5B74A9FB25DD2BAE003A6959 /* RunTimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A9FA25DD2BAE003A6959 /* RunTimeError.swift */; };
 		5B74A9FE25DD3054003A6959 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A9FD25DD3054003A6959 /* User.swift */; };
+		5B79F8C925E695EA00970E81 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B79F8C825E695EA00970E81 /* UIImageViewExtension.swift */; };
 		5BB1143A25DBA92D0042CFC8 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1143925DBA92D0042CFC8 /* ChatController.swift */; };
 		5BB1147525DBCEAE0042CFC8 /* GlobalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1147425DBCEAE0042CFC8 /* GlobalUtility.swift */; };
 		5BB1147825DBD0F20042CFC8 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1147725DBD0F20042CFC8 /* ProfileController.swift */; };
@@ -73,6 +74,7 @@
 		5B74A9F725DD089B003A6959 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5B74A9FA25DD2BAE003A6959 /* RunTimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTimeError.swift; sourceTree = "<group>"; };
 		5B74A9FD25DD3054003A6959 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5B79F8C825E695EA00970E81 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		5BB1143925DBA92D0042CFC8 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		5BB1147425DBCEAE0042CFC8 /* GlobalUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUtility.swift; sourceTree = "<group>"; };
 		5BB1147725DBD0F20042CFC8 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				5B1A0EAC25E4EAFD0088D23D /* UIColorExtension.swift */,
 				5B1A0EB225E50A760088D23D /* UIViewControllerExtension.swift */,
+				5B79F8C825E695EA00970E81 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B79F8C925E695EA00970E81 /* UIImageViewExtension.swift in Sources */,
 				5B2097E425DA7ADE00FCC922 /* RegistrationController.swift in Sources */,
 				5B2097B825DA58FA00FCC922 /* WelcomeController.swift in Sources */,
 				5B2097B425DA58FA00FCC922 /* AppDelegate.swift in Sources */,
@@ -512,6 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37MBATS678;
 				INFOPLIST_FILE = SocialMedia/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -532,6 +537,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37MBATS678;
 				INFOPLIST_FILE = SocialMedia/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (

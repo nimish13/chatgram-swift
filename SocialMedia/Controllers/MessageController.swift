@@ -115,8 +115,9 @@ extension MessageController: UITableViewDelegate, UITableViewDataSource {
             cell.messageLabel.textColor = UIColor.white
             cell.chatUserImageView.isHidden = false
         }
-        cell.currentUserImageView.setImageForName(currentUser.fullName, backgroundColor: UIColor(hex: currentUser.hexcode), circular: true, textAttributes: nil)
-        cell.chatUserImageView.setImageForName(user.fullName, backgroundColor: UIColor(hex: user.hexcode), circular: true, textAttributes: nil)
+        setProfileImage(for: currentUser, imageView: cell.currentUserImageView)
+        setProfileImage(for: user, imageView: cell.chatUserImageView)
+
         cell.messageSentAtLabel.text = message.displayDate(for: message.timestamp)
         return cell
     }
@@ -149,7 +150,6 @@ extension MessageController: SwipeTableViewCellDelegate {
                 if let error = optionalError {
                     GlobalUtility.showErrorAlert(error: error, vc: self)
                 } else {
-                    self.messages.remove(at: indexPath.row)
                     self.tableView.reloadData()
                 }
             }

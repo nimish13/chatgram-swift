@@ -39,6 +39,7 @@ struct K {
     }
     
     struct User {
+        static let profileURLField = "profileURL"
         static let collectionName = "users"
         static let firstNameField = "firstName"
         static let lastNameField = "lastName"

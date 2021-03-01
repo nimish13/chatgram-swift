@@ -106,7 +106,8 @@ class ChatController: UIViewController {
                         firstName: data[K.User.firstNameField] as! String,
                         lastName: data[K.User.lastNameField] as! String,
                         email: data[K.User.emailField] as! String,
-                        hexcode: data[K.User.hexcodeField] as! String
+                        hexcode: data[K.User.hexcodeField] as! String,
+                        profileUrl: data[K.User.profileURLField] as? String
                     )
                 }
             }
@@ -124,7 +125,7 @@ class ChatController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     let data = document.data()
-                    let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String, hexcode:  data[K.User.hexcodeField] as! String)
+                    let user = User(firebaseId: document.documentID, firstName: data[K.User.firstNameField] as! String, lastName: data[K.User.lastNameField] as! String, email: data[K.User.emailField] as! String, hexcode:  data[K.User.hexcodeField] as! String, profileUrl: data[K.User.profileURLField] as? String)
                     self.usersWithCurrentUser.append(user)
                 }
                 self.users = self.usersWithCurrentUser.filter { $0.firebaseId != Auth.auth().currentUser?.uid ?? ""}
@@ -206,7 +207,7 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
                 cell.userImageView.setImageForName(lastMessage.receiver.fullName, backgroundColor: UIColor(hex: lastMessage.receiver.hexcode), circular: true, textAttributes: nil)
             } else {
                 cell.userName.text = lastMessage.sender.fullName
-                cell.userImageView.setImageForName(lastMessage.sender.fullName, backgroundColor: UIColor(hex: lastMessage.sender.hexcode), circular: true, textAttributes: nil)
+                setProfileImage(for: lastMessage.sender, imageView: cell.userImageView)
             }
             cell.message.text = lastMessage.body
             cell.timestamp.text = lastMessage.displayDate(for: lastMessage.timestamp)
